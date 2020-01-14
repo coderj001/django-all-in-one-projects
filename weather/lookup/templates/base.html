@@ -28,8 +28,22 @@
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
+	<style>
+		body{
+			background: #c9ffbf;
+			background: -webkit-linear-gradient(left, #c9ffbf, #ffafbd);
+			background: -o-linear-gradient(left, #c9ffbf, #ffafbd);
+			background: linear-gradient(to right, #c9ffbf, #ffafbd); 
+		}
+		.good {background-color: #0C0;;}
+		.moderate {background-color: #FFFF00;;}
+		.usg {background-color: #FF9900;;}
+		.unhealthy {background-color: #FF0000;;}
+		.veryunhealthy {background-color: #990066;;}
+		.hazardous {background-color: #660000;;}
+	</style>
 </nav>
-    <div class="container">
+    <div class="container alpha">
     	{% block content %}
 
 		{% endblock %}

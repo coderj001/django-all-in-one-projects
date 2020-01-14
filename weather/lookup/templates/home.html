@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
-<br>
+<br><br>
 {% if api %}
 	{% if api == "ERROR..." %}
 		<p>There is api failure. Please try again...</p>
 	{% else %}
 	{% for i in api %}
-	<p>{{ i }}</p>
-	<br>
+	<!-- <p>{{ i }}</p> -->
+	<div class="media">
+	  <div class="mr-3">
+	  	<div class="btn {{ i.color }}"><b>{{ i.Category.Name }}</b></div>
+	  <div class="media-body {{ i.color }}">
+	    <h5 class="mt-0">{{ i.ReportingArea }}, <hr>Air Quality: {{ i.AQI }}</h5>
+	    <ul class="list-group">
+	  	  <li class="list-group-item text-light bg-dark">StatCode: {{ i.StateCode }}</li>
+		  <li class="list-group-item text-light bg-dark">HourObserved: {{ i.HourObserved }}</li>
+		  <li class="list-group-item text-light bg-dark">Date: {{ i.DateObserved }}</li>
+		  <li class="list-group-item text-light bg-dark">Latitude: {{ i.Latitude }}</li>
+		  <li class="list-group-item text-light bg-dark">Longitude: {{ i.Longitude }}</li>
+		</ul>
+	  </div>
+	</div>
+	<br><br>
 	{% endfor %}
 	{% endif %}
 {% endif %}
