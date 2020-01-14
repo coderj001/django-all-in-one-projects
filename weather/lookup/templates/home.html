@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello World!</h1>
+<h1>Home</h1>
+<br>
+{% if api %}
+	{% if api == "ERROR..." %}
+		<p>There is api failure. Please try again...</p>
+	{% else %}
+	{% for i in api %}
+	<p>{{ i }}</p>
+	<br>
+	{% endfor %}
+	{% endif %}
+{% endif %}
 {% endblock %}
