@@ -3,7 +3,13 @@ from django.shortcuts import render
 def home(request):
 	import json
 	import requests
-	api_req=requests.get('http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=20001&distance=25&API_KEY=EABC3623-4BCF-4437-8D1B-B515131C0BC7').content
+
+	if request.method=="POST":
+		zipcode=request.POST['zipcode']
+		api_req=requests.get('http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode='+zipcode+'&distance=25&API_KEY=EABC3623-4BCF-4437-8D1B-B515131C0BC7').content
+		# return render(request,'home.html',{'zipcode':zipcode})
+	else:
+		api_req=requests.get('http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=20001&distance=25&API_KEY=EABC3623-4BCF-4437-8D1B-B515131C0BC7').content
 	try:
 		api=json.loads(api_req)
 		for i in api:

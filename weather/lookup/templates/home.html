@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if zipcode %}
+	<h1>{{ zipcode }}</h1>
+{% endif %}
 <br><br>
 {% if api %}
 	{% if api == "ERROR..." %}
@@ -13,6 +16,7 @@
 	  	<div class="btn {{ i.color }}"><b>{{ i.Category.Name }}</b></div>
 	  <div class="media-body {{ i.color }}">
 	    <h5 class="mt-0">{{ i.ReportingArea }}, <hr>Air Quality: {{ i.AQI }}</h5>
+	    <p><span>{{ i.msg }}</span></p>
 	    <ul class="list-group">
 	  	  <li class="list-group-item text-light bg-dark">StatCode: {{ i.StateCode }}</li>
 		  <li class="list-group-item text-light bg-dark">HourObserved: {{ i.HourObserved }}</li>
