@@ -1,0 +1,11 @@
+.gitignore
+venv/
+__pycache__/
+settings.cpython-37.pyc
+*.pc
+*.pyc
+*.pyo
+__pycache__
+.deps
+.libs
+/_build/
