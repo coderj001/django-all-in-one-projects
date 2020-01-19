@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Todo-Do List {% endblock %}
+
+{% block content %}
+<h1>ToDo-List: ADD</h1>
+	
+	<form class="form-inline my-2 my-lg-0 dilink" method="post">{% csrf_token %}
+      <input class="form-control mr-sm-2" type="text" placeholder="Todo-Do Item" aria-label="Search" name="item">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Add To List</button>
+    </form>
+    {% if messages %}
+    	{% for msg in messages %}
+    		<span class="alert alert-warning alert-dismissable">
+				<button class="close" data-dismiss="alert">x</button>
+    			<small>{{ msg }}</small></span>
+    	{% endfor %}
+    {% endif %}
+    {% if items %}
+    <br>
+    <table class="table table table-bordered table-hover">
+    	{% for i in items %}
+    		{% if i.completed %}
+    		<tr class="table-info">
+	    		<td class="sticker"><center>{{ i.item }}</center></td>
+	    		<td><center>{{ i.completed }}</center></td>
+	    		<td><center>DELETE</center></td>
+    		</tr>
+    		{% else %}
+    		<tr>
+	    		<td><center>{{ i.item }}</center></td>
+	    		<td><center>{{ i.completed }}</center></td>
+	    		<td><center>DELETE</center></td>
+    		</tr>
+    		{% endif %}
+    	{% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}
