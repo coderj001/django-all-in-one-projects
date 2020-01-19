@@ -23,14 +23,14 @@
     		{% if i.completed %}
     		<tr class="table-info">
 	    		<td class="sticker"><center>{{ i.item }}</center></td>
-	    		<td><center>{{ i.completed }}</center></td>
-	    		<td><center>DELETE</center></td>
+	    		<td><center><a href="{% url 'uncross' i.id %}">REDO</a></center></td>
+	    		<td><center><a href="{% url 'delete' i.id %}">DELETE</a></center></td>
     		</tr>
     		{% else %}
     		<tr>
 	    		<td><center>{{ i.item }}</center></td>
-	    		<td><center>{{ i.completed }}</center></td>
-	    		<td><center>DELETE</center></td>
+	    		<td><center><a href="{% url 'cross_off' i.id %}">DONE</a></center></td>
+	    		<td><center><a href="{% url 'delete' i.id %}">DELETE</a></center></td>
     		</tr>
     		{% endif %}
     	{% endfor %}
