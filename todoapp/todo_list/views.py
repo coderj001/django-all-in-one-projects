@@ -33,3 +33,14 @@ def uncross(req,list_id):
 	item.completed=False
 	item.save()
 	return redirect('home')
+def edit(req,list_id):
+	if req.method=='POST':
+		item=ToDoList.objects.get(pk=list_id)
+		form=ListForm(req.POST or None, instance=item)
+		if form.is_valid():
+			form.save()
+			messages.success(req,('item has been edited!'))
+			return redirect('home')
+	else:
+		item=ToDoList.objects.get(pk=list_id)
+		return render(req, 'edit.html', {'item':item})
